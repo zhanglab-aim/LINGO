@@ -10,7 +10,7 @@ conda env create -f dna_llm.yml
 </pre>
 
 ## An example for fine-tuning the OPT-125M model using H3 data.
-See DNA_llm_test.ipynb
+See [DNA_llm_test.ipynb](https://github.com/zhanglab-aim/finetune-llm/blob/main/DNA_llm_test.ipynb)
 
 ## Fine-tuning the OPT-125M model on all datasets
 <pre>
