@@ -21,6 +21,6 @@ sbatch run_llm_lora.sh data_path
 </pre>
 
 ## Figures
-![The Pareto front](https://github.com/zhanglab-aim/finetune-llm/edit/main/Figures_llm/pareto.png)
+![The Pareto front](https://github.com/zhanglab-aim/finetune-llm/edit/main/Figures_llm/pareto_front.png)
 ![The MCC Changes over time](https://github.com/zhanglab-aim/finetune-llm/edit/main/Figures_llm/test_performance.png)
 
