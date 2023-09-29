@@ -790,12 +790,32 @@ class RankAllocator(object):
         )[0].item()
 
         rank_pattern = {}
+        probability_to_keep = 0.1
         # Mask the unimportant triplets
         with torch.no_grad():
             for n, p in model.named_parameters():
                 if f"lora_E.{self.adapter_name}" in n:
+                    #p.masked_fill_(triplet_ipt[n] <= mask_threshold, 0.0)
+                    #rank_pattern[n] = (~(triplet_ipt[n] <= mask_threshold)).view(-1).tolist()
+                    # Create a mask where values below the threshold have a 10% chance to be False
+                    # Zero out unimportant weights deterministically
                     p.masked_fill_(triplet_ipt[n] <= mask_threshold, 0.0)
-                    rank_pattern[n] = (~(triplet_ipt[n] <= mask_threshold)).view(-1).tolist()
+
+                    # Chance to retain pruned weights
+                    chance_mask = torch.rand_like(triplet_ipt[n]) < probability_to_keep
+                    combined_mask = (triplet_ipt[n] <= mask_threshold) & ~chance_mask
+                    p.masked_fill_(combined_mask, 0.0)
+
+                    # Chance to prune important weights
+                    prune_chance_mask = torch.rand_like(triplet_ipt[n]) < probability_to_keep
+                    important_combined_mask = (triplet_ipt[n] > mask_threshold) & prune_chance_mask
+                    p.masked_fill_(important_combined_mask, 0.0)
+
+                    # Update the rank pattern
+                    final_mask = (combined_mask | important_combined_mask)
+                    print(final_mask)
+                    rank_pattern[n] = (~final_mask).view(-1).tolist()
+
         return rank_pattern
 
     def update_and_allocate(self, model, global_step, force_mask=False):
@@ -805,6 +825,7 @@ class RankAllocator(object):
         budget, mask_ind = self.budget_schedule(global_step)
         # Allocate the budget according to importance scores
         if mask_ind or force_mask:
+            print("force_mask triggered")
             rank_pattern = self.mask_to_budget(model, budget)
         else:
             rank_pattern = None
