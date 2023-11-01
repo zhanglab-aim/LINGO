@@ -24,3 +24,5 @@ sbatch run_llm_lora.sh data_path
 ![The Pareto front](https://github.com/zhanglab-aim/finetune-llm/edit/main/Figures_llm/pareto_front.png)
 ![The MCC Changes over time](https://github.com/zhanglab-aim/finetune-llm/edit/main/Figures_llm/test_performance.png)
 
+checkpoints [link](https://drive.google.com/drive/folders/1pDPujSbqzOVxz8OeWtzOTgvjOKInC4nV?usp=share_link)
+
