@@ -6,7 +6,7 @@ Parameter-Efficient Fine-Tuning (PEFT) has become the de facto approach to fine-
 2. Prompt Tuning methods, e.g., [The Power of Scale for Parameter-Efficient Prompt Tuning](https://arxiv.org/abs/2104.08691)
 3. Low-rank adaptation method, e.g.,  [LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS](https://arxiv.org/abs/2106.09685) and AdaLoRA: [Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/abs/2303.10512)
 Among these methods, we opt for AdaLoRA+random sampling (AdaLoRA+RS) to deal with the data heterogeneous issue and domain shift prompting (DSP) to leverage the in-context learning ability of LLMs. The framework is as follows:
-![image](https://github.com/zhanglab-aim/finetune-llm/tree/v3/figures/PLM_figure.png)
+![image](/figures/PLM_figure.png)
 
 The repository is organized as follows:
 
