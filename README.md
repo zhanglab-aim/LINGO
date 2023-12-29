@@ -6,7 +6,8 @@ Parameter-Efficient Fine-Tuning (PEFT) has become the de facto approach to fine-
 2. Prompt Tuning methods, e.g., [The Power of Scale for Parameter-Efficient Prompt Tuning](https://arxiv.org/abs/2104.08691)
 3. Low-rank adaptation method, e.g.,  [LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS](https://arxiv.org/abs/2106.09685) and AdaLoRA: [Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/abs/2303.10512)
 Among these methods, we opt for AdaLoRA+random sampling (AdaLoRA+RS) to deal with the data heterogeneous issue and domain shift prompting (DSP) to leverage the in-context learning ability of LLMs. The framework is as follows:
-![image](/figures/PLM_figure.png)
+<img src="/figures/PLM_figure.png" alt="The framework" style="width:8cm; height:auto;"/>
+<!-- ![image](/figures/PLM_figure.png) -->
 
 The repository is organized as follows:
 
@@ -27,9 +28,22 @@ conda env create -f dna_llm.yml
 sbatch run_llm_lora.sh data_path
 </pre>
 
+## Models support matrix
+
+Find models that are supported out of the box below. 
+| Model        | LoRA | AdaLoRA  | AdaLoRA + RS  |AdaLoRA +RS + one-hot w. (DSP)  ||AdaLoRA +RS + BBPE  w. (DSP) |
+|--------------| ---- | ---- | ---- | ----  | ----  |
+| 1000G-500M        | ✅  | ✅  | ✅  |   | ✅  |
+| DNABERT-2        | ✅  | ✅  | ✅  |   | ✅  |
+| OPT          | ✅  | ✅  | ✅  | ✅  | ✅  |
+| LLaMA        | ✅  | ✅  | ✅  |  |   |
+
+
 ## Figures
-![The Pareto front](https://github.com/zhanglab-aim/finetune-llm/tree/v3/figures/pareto_front.png)
-![The MCC Changes over time](https://github.com/zhanglab-aim/finetune-llm/tree/v3/figures/mcc.png)
+<img src="/figures/pareto_front.png" alt="The Pareto front" style="width:8cm; height:auto;"/>
+<img src="/figures/mcc.png" alt="The MCC Changes over time" style="width:8cm; height:auto;"/>
+<!-- ![The Pareto front](/figures/pareto_front.png) -->
+<!-- ![The MCC Changes over time](/figures/mcc.png) -->
 
 ## Cite
 <pre>
