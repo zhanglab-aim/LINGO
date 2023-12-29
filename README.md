@@ -19,7 +19,10 @@ The repository is organized as follows:
 3. peftnew/: Coupling RS with AdaLoRA method
 4. scripts/: SLURM batch script to run the .py files.
 5. demos/: Some minimal demos to run AdaLoRA + RS with DSP on OPT and 4-bit quantized Llama. See [llama_dna_sequential_finetune_QLoRA.ipynb](https://github.com/zhanglab-aim/finetune-llm/blob/main/llama_dna_sequential_finetune_QLoRA.ipynb)
-6. Besides, this link contains 2 fine-tuned checkpoints. See [link](https://drive.google.com/drive/folders/1pDPujSbqzOVxz8OeWtzOTgvjOKInC4nV?usp=share_link)
+6. Besides, this link contains 2 fine-tuned checkpoints. See [link](https://drive.google.com/drive/folders/1pDPujSbqzOVxz8OeWtzOTgvjOKInC4nV?usp=share_link). Replace "/path/to/your/local/model" with the actual file path to your saved model on your local system. 
+<pre>
+model_name_or_path: Optional[str] = field(default="/path/to/your/local/model")
+</pre>
 
 ## Setting up environment 
 <pre>
@@ -35,10 +38,10 @@ sbatch run_llm_lora.sh data_path
 
 Find models that are supported out of the box below. 
 
-| Model           | LoRA | AdaLoRA  | AdaLoRA + RS | AdaLoRA +RS + one-hot w. (DSP) | AdaLoRA +RS + BBPE w. (DSP) |
+| Model           | LoRA | AdaLoRA  | AdaLoRA + RS | AdaLoRA +RS + one-hot (w. DSP) | AdaLoRA +RS + BBPE (w. DSP) |
 |-----------------|------|----------|--------------|--------------------------------|-----------------------------|
-| 1000G-500M      | ✅   | ✅       | ✅           |                                | ✅                          |
-| DNABERT-2       | ✅   | ✅       | ✅           |                                | ✅                          |
+| 1000G-500M      | ✅   | ✅       | ✅           |                                |                           |
+| DNABERT-2       | ✅   | ✅       | ✅           |                                |                           |
 | OPT             | ✅   | ✅       | ✅           | ✅                             | ✅                          |
 | LLaMA           | ✅   | ✅       | ✅           |                                |                             |
 
