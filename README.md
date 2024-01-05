@@ -6,7 +6,7 @@ Parameter-Efficient Fine-Tuning (PEFT) has become the de facto approach to fine-
 2. Prompt Tuning methods, e.g., [The Power of Scale for Parameter-Efficient Prompt Tuning](https://arxiv.org/abs/2104.08691)
 3. Low-rank adaptation method, e.g.,  [LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS](https://arxiv.org/abs/2106.09685) and AdaLoRA: [Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/abs/2303.10512)
 
-Among these methods, we opt for AdaLoRA+random sampling (AdaLoRA+RS) to deal with the data heterogeneous issue and domain shift prompting (DSP) to leverage the in-context learning ability of LLMs. The framework is as follows:
+Among these methods, we opt for adaptive rank sampling to deal with the data heterogeneous issue and LINGO: Language prefix fINe-tuning for GenOmes to leverage the in-context learning ability of LLMs. The framework is as follows:
 <p align="center">
 <img src="/figures/PLM_figure.png" alt="The framework" style="width:20cm; height:auto;"/>
 </p>
@@ -14,7 +14,7 @@ Among these methods, we opt for AdaLoRA+random sampling (AdaLoRA+RS) to deal wit
 
 The repository is organized as follows:
 
-1. dataset/: the directory of data sets. We applied our AdaLoRA+RS for a comprehensive set of genome understanding tasks on various LLMs, i.e., promoter detection, epigenetic marks prediction in yeast, and in multiple human cell types. the link is [Here](https://drive.google.com/drive/folders/12FAujYJIT-XR9PCKECvHmLEeTykLkmo9?usp=share_link)
+1. dataset/: the directory of data sets. We applied our adaptive rank sampling for a comprehensive set of genome understanding tasks on various LLMs, i.e., promoter detection, epigenetic marks prediction in yeast, and in multiple human cell types. the link is [Here](https://drive.google.com/drive/folders/12FAujYJIT-XR9PCKECvHmLEeTykLkmo9?usp=share_link)
 2. finetune/: fine-tuning LLMs and pre-trained DNA foundation models for single label task and multiple label tasks using DSP with BBPE tokenized embeddings and one-hot embeddings.
 3. peftnew/: Coupling RS with AdaLoRA method
 4. scripts/: SLURM batch script to run the .py files.
@@ -38,7 +38,7 @@ sbatch run_llm_lora.sh data_path
 
 Find models that are supported out of the box below. 
 
-| Model           | LoRA | AdaLoRA  | AdaLoRA + RS | AdaLoRA +RS + one-hot (w. DSP) | AdaLoRA +RS + BBPE (w. DSP) |
+| Model           | LoRA | AdaLoRA  | Adaptive rank sampling | LINGO + one-hot | LINGO + BBPE|
 |-----------------|------|----------|--------------|--------------------------------|-----------------------------|
 | 1000G-500M      | ✅   | ✅       | ✅           |                                |                           |
 | DNABERT-2       | ✅   | ✅       | ✅           |                                |                           |
