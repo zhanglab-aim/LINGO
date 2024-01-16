@@ -1,4 +1,4 @@
-# :shipit:Domain-Shift-Prompting-for-Parameter-Efficient-Fine-Tuning-of-Open-Pre-trained-Transformers-for-Genomic-Sequence
+# :shipit:Efficient and Scalable Fine-Tune of Language Models for Genome Understanding
 
 Parameter-Efficient Fine-Tuning (PEFT) has become the de facto approach to fine-tune PFMs while decreasing the computational costs. The current status of PEFT includes:
 
