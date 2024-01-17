@@ -14,11 +14,11 @@ Among these methods, we opt for adaptive rank sampling to deal with the data het
 
 The repository is organized as follows:
 
-1. dataset/: the directory of data sets. We applied our adaptive rank sampling for a comprehensive set of genome understanding tasks on various LLMs, i.e., promoter detection, epigenetic marks prediction in yeast, and in multiple human cell types. the link is [Here](https://drive.google.com/drive/folders/12FAujYJIT-XR9PCKECvHmLEeTykLkmo9?usp=share_link)
+1. dataset/: the directory of data sets. We applied our adaptive rank sampling for a comprehensive set of genome understanding tasks on various LLMs, i.e., promoter detection, epigenetic marks prediction in yeast, and in multiple human cell types. the link is [here](https://drive.google.com/drive/folders/12FAujYJIT-XR9PCKECvHmLEeTykLkmo9?usp=share_link)
 2. finetune/: fine-tuning LLMs and pre-trained DNA foundation models for single label task and multiple label tasks using DSP with BBPE tokenized embeddings and one-hot embeddings.
 3. peftnew/: Coupling RS with AdaLoRA method
 4. scripts/: SLURM batch script to run the .py files.
-5. demos/: Some minimal demos to run AdaLoRA + RS with DSP on OPT and 4-bit quantized Llama. See [llama_dna_sequential_finetune_QLoRA.ipynb](https://github.com/zhanglab-aim/LINGO/blob/main/llama_dna_sequential_finetune_QLoRA.ipynb)
+5. demos/: Some minimal demos to run AdaLoRA + RS with DSP on OPT and 4-bit quantized Llama. See [llama_dna_sequential_finetune_QLoRA.ipynb](https://github.com/zhanglab-aim/LINGO/blob/main/demos/llama_dna_sequential_finetune_QLoRA.ipynb)
 6. Besides, this link contains 2 fine-tuned checkpoints. See [link](https://drive.google.com/drive/folders/1pDPujSbqzOVxz8OeWtzOTgvjOKInC4nV?usp=share_link). Replace "/path/to/your/local/model" with the actual file path to your saved model on your local system. 
 <pre>
 model_name_or_path: Optional[str] = field(default="/path/to/your/local/model")
