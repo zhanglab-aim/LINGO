@@ -25,6 +25,7 @@ model_name_or_path: Optional[str] = field(default="/path/to/your/local/model")
 </pre>
 
 ## Setting up environment 
+Typically, the setup process on a standard PC requires several tens of minutes to complete.
 <pre>
 conda env create -f dna_llm.yml
 </pre>
